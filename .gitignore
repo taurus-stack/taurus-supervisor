@@ -1,0 +1,23 @@
+# ====================================================================
+# taurus-supervisor — 主机守护进程 (asyncio)
+# ====================================================================
+
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# 🔒 SECURITY
+*.env
+*.env.local
+!*.env.example
+
+# 运行时
+*.log
+logs/
+
+# 临时 / 打包产物
+_debug*.py
+*.spec.bak
+build/
+dist/

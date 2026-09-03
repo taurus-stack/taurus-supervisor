@@ -1,0 +1,34 @@
+[Unit]
+Description=Taurus Supervisor - Client Process Manager
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/taurus
+ExecStart=/opt/taurus/supervisor/bin/taurus-supervisor
+Restart=always
+RestartSec=3
+RestartForceExitStatus=75
+
+# Environment variables
+EnvironmentFile=/etc/taurus-supervisor/supervisor.env
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=taurus-supervisor
+
+# Resource limits
+MemoryLimit=256M
+CPUQuota=25%
+
+# Security
+NoNewPrivileges=false
+ProtectSystem=false
+ProtectHome=false
+
+[Install]
+WantedBy=multi-user.target
