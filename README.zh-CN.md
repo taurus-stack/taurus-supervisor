@@ -1,5 +1,7 @@
 # Taurus Supervisor
 
+> English version: [README.md](README.md)
+
 轻量级通用进程管理守护进程，负责管理任意程序的生命周期。
 
 ## 概述

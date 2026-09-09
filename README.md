@@ -1,5 +1,7 @@
 # Taurus Supervisor
 
+> 中文版见 [README.zh-CN.md](README.zh-CN.md)
+
 Lightweight general-purpose process management daemon responsible for managing the lifecycle of arbitrary programs.
 
 ## Overview
@@ -769,5 +771,5 @@ This project is licensed under the GNU Affero General Public License v3.0 - see 
 
 ## Contact
 
-- Email: taurus-stackoutlook.com
+- Email: taurus-stack@outlook.com
 - Issues: [GitHub Issues](https://github.com/taurus-ops/taurus-supervisor/issues)
