@@ -13,7 +13,7 @@ WORKDIR /app
 RUN sed -i 's|http://deb.debian.org/debian|https://mirrors.aliyun.com/debian|g' /etc/apt/sources.list.d/debian.sources \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-        build-essential \
+        build-essential curl \
     && pip install --no-cache-dir "poetry==$POETRY_VERSION" \
     && rm -rf /var/lib/apt/lists/*
 
@@ -23,9 +23,11 @@ RUN poetry install --no-interaction --no-ansi --only main --no-root
 
 COPY taurus_supervisor/ ./taurus_supervisor/
 COPY taurus_pm/ ./taurus_pm/
+COPY docker-entrypoint.sh ./docker-entrypoint.sh
+RUN chmod +x ./docker-entrypoint.sh
 
 RUN useradd -m -u 1000 taurus \
-    && chown -R taurus:taurus /app
-USER taurus
+    && mkdir -p /var/log/taurus-supervisor /opt/taurus \
+    && chown -R taurus:taurus /app /var/log/taurus-supervisor /opt/taurus
 
-CMD ["python", "-m", "taurus_supervisor.main"]
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
